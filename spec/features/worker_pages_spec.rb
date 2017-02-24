@@ -18,9 +18,7 @@ describe "the create a job path" do
 
   click_link @job.title
   expect(page).to have_content @job.description
-  page.find('#job_pending')
-
-  expect(page).to have_content "You claimed this job. Get to work!"
+  expect(page).to have_content "it's currently pending"
 
 
 
