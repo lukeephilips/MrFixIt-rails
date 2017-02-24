@@ -1,43 +1,69 @@
 <div class="alert">
 
 </div>
-<h2>Total in process jobs ( <%= @jobs.where(completed: false).count %>):</h2>
-<h2>Total completed jobs ( <%= @jobs.where(completed: true).count %>):</h2>
-
-
-<h1><%= current_worker.email %>'s in process jobs ( <%= @jobs.where(completed: false).count %>):</h1>
-<% @jobs.where(completed: false).each do |job| %>
-  <div class="well">
-    <h1><%= job.id %></h1>
-
-    <h2><%= job.title %></h2>
-    <p> <%= job.description %></p>
-    <span>Customer: <%= job.user.email %></span><br>
-    <div class="complete-job">
-      <%= form_for job do |f| %>
-        <%= f.check_box :completed %>
-        <%= f.label :completed %>
-
-        <%= f.check_box :in_progress %>
-        <%= f.label :in_progress %>
-      <% end %>
-    </div>
+<div class="row">
+  <div class="col-sm-4">
+    <h1><%= current_worker.email %>'s claimed jobs ( <%= @jobs.where(completed: false).count %> ):</h1>
+    <% @jobs.where(in_progress: false, completed: false).each do |job| %>
+      <div class="well">
+        <h2><%= job.title %></h2>
+        <p> <%= job.description %></p>
+        <span>Customer: <%= job.user.email %></span><br>
+        <div class="complete-job">
+          <%= form_for job do |f| %>
+            <%= f.check_box :in_progress %>
+            <%= f.label :in_progress %>
+            <%= f.check_box :completed %>
+            <%= f.label :completed %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+  <div class="col-sm-4">
+    <h1><%= current_worker.email %>'s in progress jobs ( <%= @jobs.where(in_progress: true, completed: false).count %> ):</h1>
+    <% if @jobs.where(in_progress: true, completed: false).any? %>
+      <% @jobs.where(in_progress: true, completed: false).each do |job| %>
+         <div class="well">
+           <h2><%= job.title %></h2>
+           <p> <%= job.description %></p>
+           <span>Customer: <%= job.user.email %></span><br>
+           <div class="complete-job">
+             <%= form_for job do |f| %>
+               <%= f.check_box :in_progress %>
+               <%= f.label :in_progress %>
+               <%= f.check_box :completed %>
+               <%= f.label :completed %>
+             <% end %>
+           </div>
+         </div>
+       <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h1><%= current_worker.email %>'s completed jobs ( <%= @jobs.where(completed: true).count %> ):</h1>
+    <% if @jobs.where(completed: true).any? %>
+      <% @jobs.where(completed: true).each do |job| %>
+        <div class="well">
+          <h2><%= job.title %></h2>
+          <p> <%= job.description %></p>
+          <span>Customer: <%= job.user.email %></span><br>
+          <div class="complete-job">
+            <%= form_for job do |f| %>
+              <%= f.check_box :in_progress %>
+              <%= f.label :in_progress %>
+              <%= f.check_box :completed %>
+              <%= f.label :completed %>
+            <% end %>
+          </div>
+        </div>
+       <% end %>
+    <% end %>
+  </div>
+</div>
 
-<% if @jobs.where(completed: true).any? %>
- <h2><%= current_worker.email %>'s completed jobs ( <%= @jobs.where(completed: true).count %>):</h2>
- <% @jobs.where(completed: true).each do |job| %>
-   <div class="well">
-     <h2><%= job.title %></h2>
-     <p> <%= job.description %></p>
-     <span>Customer: <%= job.user.email %></span><br>
-     <span>Completed: <%= job.completed %></span><br>
-     <span>In Progress: <%= job.in_progress %></span>
 
-   </div>
- <% end %>
-<% end %>
+
 
 <script >
 $(document).ready(function(){
