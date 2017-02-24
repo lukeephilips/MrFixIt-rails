@@ -607,8 +607,8 @@
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/helpers/application_helper.rb": [
         1,
         1,
-        0,
-        0,
+        1,
+        1,
         null,
         0,
         null,
@@ -632,11 +632,11 @@
         1,
         1,
         1,
-        0,
+        1,
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -793,6 +793,17 @@
         1,
         1,
         1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
         null,
         null
       ],
@@ -824,6 +835,6 @@
         null
       ]
     },
-    "timestamp": 1487975964
+    "timestamp": 1487976234
   }
 }
