@@ -7,6 +7,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class="user_type alert">
+      <% if user_signed_in? %>
+        <h2 class="login-notice"><em>You're signed into your <%= current_worker.email %> <b>worker account</b></em></h2>
+      <% elsif worker_signed_in? %>
+        <h2 class="login-notice"><em>You're signed in as <%= current_user.email %></em></h2>
+      <% end %>
+    </div>
     <div class="header">
       <h1 class="page-title">Mr. Fix-It</h1>
       <h2>Crowd-sourced repairs!</h2>
@@ -17,13 +24,11 @@
         <li><%= link_to "See All Jobs", jobs_path %></li>
         <li><%= link_to "Add Your Job", new_job_path %></li>
         <% if worker_signed_in? %>
-          <li class="login-notice"><em>You're signed into your <%= current_worker.email %> <b>worker account</b></em></li>
           <li><%= link_to "Worker Dashboard", worker_path(current_worker) %></li>
           <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
         <% elsif user_signed_in? %>
           <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
           <li><%= link_to "Register as a Worker", new_worker_path %></li>
-          <li class="login-notice"><em>You're signed in as <%= current_user.email %></em></li>
         <% else %>
         <li><%= link_to "Register as a Worker", new_worker_path %></li>
         <li><%= link_to "Register to Post Jobs", new_user_registration_path %></li>
@@ -33,6 +38,8 @@
       </ul>
     </div>
     <div class="content">
+
+
     <div class="flash-messages">
       <%= flash[:alert] %>
       <h3><%= flash[:notice] %></h3>

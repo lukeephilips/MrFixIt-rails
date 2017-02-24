@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 body {
   margin: 0;
   padding: 0;
@@ -61,4 +64,17 @@ body {
 
 .page-title {
   color: #f7b50c;
+}
+.user_type{
+  position: absolute;
+  top: 20px;
+  right:50px;
+  background-color: black;
+  color: white;
+  border: 4px solid darkred;
+  width: 400px;
+  text-align: center;
+}
+.login-notice{
+  font-size: 1em;
 }
