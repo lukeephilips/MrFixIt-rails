@@ -1,7 +1,10 @@
 <h1>Jobs</h1>
-
-<ul>
-  <% @jobs.each do |job| %>
-  <li><%= link_to job.title, job_path(job) %></li>
-  <% end %>
-</ul>
+<% if @jobs.any?  %>
+  <ul>
+    <% @jobs.each do |job| %>
+    <li><%= link_to job.title, job_path(job) %></li>
+    <% end %>
+  </ul>
+<% else %>
+<h2>There are no jobs yet. Be the first to add a job!</h2>
+<% end %>

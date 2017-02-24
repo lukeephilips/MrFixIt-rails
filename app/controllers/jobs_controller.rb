@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-
+before_action :authenticate_user!, only: [:new, :create, :update]
   def index
     @jobs = Job.all
   end
@@ -16,8 +16,10 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     if @job.save
+      flash[:notice] = "You added a job"
       redirect_to jobs_path
     else
+      flash[:alert] = @job.errors.full_messages.each {|m| m.to_s}.join
       render :new
     end
   end

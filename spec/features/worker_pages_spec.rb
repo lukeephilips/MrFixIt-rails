@@ -1,5 +1,6 @@
-require 'rails_helper'
-
-# describe "the creat a worker path" do
-#   visit worker_path
+# require 'rails_helper'
+#
+# describe "the create a job path" do
+#   visit root_path
+#   click_link ''
 # end
