@@ -1,18 +1,19 @@
 <div class="alert">
-
+<p class="changes"></p>
 </div>
 <div class="row">
   <div class="col-sm-4">
-    <h1><%= current_worker.email %>'s claimed jobs ( <%= @jobs.where(completed: false).count %> ):</h1>
-    <% @jobs.where(in_progress: false, completed: false).each do |job| %>
+    <h1><%= current_worker.email %>'s jobs (<%= @jobs.count %>)</h1>
+    <% @jobs.each do |job| %>
       <div class="well">
         <h2><%= job.title %></h2>
         <p> <%= job.description %></p>
         <span>Customer: <%= job.user.email %></span><br>
         <div class="complete-job">
-          <%= form_for job do |f| %>
+          <%= form_for job, remote: true do |f| %>
             <%= f.check_box :in_progress %>
             <%= f.label :in_progress %>
+
             <%= f.check_box :completed %>
             <%= f.label :completed %>
           <% end %>
@@ -20,55 +21,13 @@
       </div>
     <% end %>
   </div>
-  <div class="col-sm-4">
-    <h1><%= current_worker.email %>'s in progress jobs ( <%= @jobs.where(in_progress: true, completed: false).count %> ):</h1>
-    <% if @jobs.where(in_progress: true, completed: false).any? %>
-      <% @jobs.where(in_progress: true, completed: false).each do |job| %>
-         <div class="well">
-           <h2><%= job.title %></h2>
-           <p> <%= job.description %></p>
-           <span>Customer: <%= job.user.email %></span><br>
-           <div class="complete-job">
-             <%= form_for job do |f| %>
-               <%= f.check_box :in_progress %>
-               <%= f.label :in_progress %>
-               <%= f.check_box :completed %>
-               <%= f.label :completed %>
-             <% end %>
-           </div>
-         </div>
-       <% end %>
-    <% end %>
-  </div>
-  <div class="col-sm-4">
-    <h1><%= current_worker.email %>'s completed jobs ( <%= @jobs.where(completed: true).count %> ):</h1>
-    <% if @jobs.where(completed: true).any? %>
-      <% @jobs.where(completed: true).each do |job| %>
-        <div class="well">
-          <h2><%= job.title %></h2>
-          <p> <%= job.description %></p>
-          <span>Customer: <%= job.user.email %></span><br>
-          <div class="complete-job">
-            <%= form_for job do |f| %>
-              <%= f.check_box :in_progress %>
-              <%= f.label :in_progress %>
-              <%= f.check_box :completed %>
-              <%= f.label :completed %>
-            <% end %>
-          </div>
-        </div>
-       <% end %>
-    <% end %>
-  </div>
 </div>
-
-
-
 
 <script >
 $(document).ready(function(){
   $('.complete-job input[type=checkbox]').click(function(){
     $(this).parent('form').submit();
+    $('.changes').text("You updated your job");
   });
 });
 </script>
