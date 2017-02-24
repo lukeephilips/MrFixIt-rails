@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory(:worker) do
-    email 'guy@thing.com'
+    email 'worker@thing.com'
     password 'badpassword'
   end
 end
