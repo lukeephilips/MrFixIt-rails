@@ -1,7 +1,11 @@
 class JobsController < ApplicationController
-before_action :authenticate_user!, only: [:new, :create, :update]
+before_action :authenticate_user!, only: [:new, :create]
   def index
     @jobs = Job.all
+  end
+
+  def show
+    @job = Job.find(params[:id])
   end
 
   def new
@@ -9,11 +13,8 @@ before_action :authenticate_user!, only: [:new, :create, :update]
    render :new
   end
 
-  def show
-    @job = Job.find(params[:id])
-  end
-
   def create
+    byebug
     @job = Job.new(job_params)
     if @job.save
       flash[:notice] = "You added a job"
@@ -44,7 +45,7 @@ before_action :authenticate_user!, only: [:new, :create, :update]
 private
 
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :user_id)
   end
 
 end

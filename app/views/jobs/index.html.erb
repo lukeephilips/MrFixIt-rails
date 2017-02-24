@@ -1,8 +1,8 @@
 <h1>Jobs</h1>
 <% if @jobs.any?  %>
   <ul>
-    <% @jobs.each do |job| %>
-    <li><%= link_to job.title, job_path(job) %></li>
+    <% @jobs.where(completed: false).each do |job| %>
+    <li><%= link_to job.title, job_path(job) %> - <%= job_pending_to_claimed(job) %></li>
     <% end %>
   </ul>
 <% else %>

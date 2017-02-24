@@ -5,16 +5,22 @@ FactoryGirl.define do
   end
 end
 FactoryGirl.define do
-    if Worker.any?
-      @@worker = Worker.find_by(email: 'guy@thing.com')
+  factory(:user) do
+    email 'guy@thing.com'
+    password 'badpassword'
+  end
+end
+FactoryGirl.define do
+    if User.any?
+      @@user = User.find(1)
     else
-      @@worker = FactoryGirl.create(:worker)
+      @@user = FactoryGirl.create(:user)
     end
   factory(:job) do
     title 'fix code'
     description 'get all the unit tests to pass'
     completed false
     pending true
-    worker_id @@worker.id
+    user_id @@user.id
   end
 end

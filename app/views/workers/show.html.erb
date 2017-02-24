@@ -1,7 +1,22 @@
-<h1><%= current_worker.email %>'s claimed jobs:</h1>
+<h1><%= current_worker.email %>'s in process jobs:</h1>
 
-<ul>
-<% current_worker.jobs.each do |job| %>
-<li><%= link_to job.title, job_path(job) %></li>
+<% Job.where(worker_id: current_worker, completed: false).each do |job| %>
+  <div class="well">
+    <h2><%= job.title %></h2>
+    <p> <%= job.description %></p>
+    <span>Customer: <%= job.user.email %></span><br>
+    <span>Completed: <%= job.completed %></span>
+  </div>
 <% end %>
-</ul>
+
+<% if Job.where(worker_id: current_worker, completed: true).any? %>
+  <h2><%= current_worker.email %>'s completed jobs:</h2>
+  <% Job.where(worker_id: current_worker, completed: true).each do |job| %>
+    <div class="well">
+      <h2><%= job.title %></h2>
+      <p> <%= job.description %></p>
+      <span>Customer: <%= job.user.email %></span><br>
+      <span>Completed: <%= job.completed %></span>
+    </div>
+  <% end %>
+<% end %>

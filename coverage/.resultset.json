@@ -568,6 +568,7 @@
         null,
         1,
         1,
+        1,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/models/worker.rb": [
@@ -576,7 +577,9 @@
         null,
         1,
         null,
-        1,
+        null,
+        null,
+        null,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/models/application_record.rb": [
@@ -590,6 +593,10 @@
         null,
         1,
         null,
+        null,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/controllers/application_controller.rb": [
@@ -599,6 +606,13 @@
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/helpers/application_helper.rb": [
         1,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/channels/application_cable/channel.rb": [
@@ -622,14 +636,15 @@
         null,
         1,
         0,
+        null,
+        null,
+        1,
+        0,
         0,
         null,
         null,
         1,
         0,
-        null,
-        null,
-        1,
         0,
         0,
         0,
@@ -708,7 +723,9 @@
       "/Users/luke/epicodus/rails/MrFixIt-rails/app/models/job.rb": [
         1,
         1,
+        null,
         1,
+        null,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/spec/factories.rb": [
@@ -721,8 +738,14 @@
         1,
         1,
         1,
+        1,
         null,
+        null,
+        1,
+        1,
         0,
+        null,
+        1,
         null,
         1,
         1,
@@ -757,16 +780,18 @@
         1,
         null,
         1,
+        2,
+        null,
         null
       ],
       "/Users/luke/epicodus/rails/MrFixIt-rails/spec/models/worker_spec.rb": [
         1,
         null,
         1,
-        2,
+        null,
         null
       ]
     },
-    "timestamp": 1487911734
+    "timestamp": 1487916478
   }
 }
