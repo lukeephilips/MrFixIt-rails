@@ -13,8 +13,12 @@
     <span>Customer: <%= job.user.email %></span><br>
     <div class="complete-job">
       <%= form_for job do |f| %>
-        <%= f.check_box :completed %>
-        <%= f.label :completed %>
+          <%= f.check_box :completed %>
+          <%= f.label :completed %>
+        <!-- <div class="start-job">
+          <%= f.check_box :in_progress %>
+          <%= f.label :in_progress %>
+        </div> -->
       <% end %>
     </div>
   </div>
@@ -28,6 +32,8 @@
      <p> <%= job.description %></p>
      <span>Customer: <%= job.user.email %></span><br>
      <span>Completed: <%= job.completed %></span>
+     <span>In Progress: <%= job.in_progress %></span>
+
    </div>
  <% end %>
 <% end %>
@@ -36,7 +42,11 @@
 $(document).ready(function(){
   $('.complete-job input[type=checkbox]').click(function(){
     $(this).parent('form').submit();
-    $('.alert').html("<p>You completed this job. Get that money!</p>")
-    });
+      $('.alert').html("<p>You completed this job. Get that money!</p>")
+  });
+  // $('.start-job input[type=checkbox]').click(function(){
+  //   $(this).parent('form').submit();
+  //     $('.alert').html("<p>You started this job. Get that money!</p>")
+  //   });
   });
 </script>

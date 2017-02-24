@@ -31,21 +31,8 @@ before_action :authenticate_worker!, only: [:update]
   end
 
   def update
+    byebug
     @job = Job.find(params[:id])
-
-  end
-
-  def update
-    @job = Job.find(params[:id])
-    # if current_user && @job.user_id == current_user.id
-    #   if @job.update(job_params)
-    #     flash[:notice] = "You edited #{@job.title}"
-    #     redirect_to jobs_path
-    #   else
-    #     flash[:alert] = @job.errors.full_messages.each {|m| m.to_s}.join
-    #     render :edit
-    #   end
-    # else
       if current_worker
         if @job.update(job_params)
           flash[:notice] = "You updated #{@job.title}."
@@ -74,7 +61,7 @@ before_action :authenticate_worker!, only: [:update]
 private
 
   def job_params
-    params.require(:job).permit(:title, :description, :user_id, :pending, :completed)
+    params.require(:job).permit(:title, :description, :user_id, :worker_id, :pending, :completed, :in_progress)
   end
 
 end

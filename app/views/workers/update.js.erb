@@ -1,5 +1,5 @@
 <% if @job.completed? %>
-  $('.alert').html("<p>You completed this job. Get that money!</p>")
-<% else %>
-  $('.alert').html("<p>Blorg</p>")
+  $('.alert').html("<p>You completed <%= @job %>. Get that money!</p>")
+<% elsif @job.in_progress? %>
+  $('.alert').html("<p>You started <%= @job %>. Get to work!</p>")
 <% end %>

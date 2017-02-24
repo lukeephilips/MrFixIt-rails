@@ -1,4 +1,7 @@
 <h1> <%= @job.title %> </h1>
+<h1> <%= @job.id %> </h1>
+<h1> <%= current_worker.id %> </h1>
+
 
 <h3><%= @job.description %></h3>
 
@@ -11,6 +14,7 @@
     <% elsif  current_worker %>
       <div class="claim-job">
         <%= form_for @job, remote: true do |f| %>
+          <%= f.text_field :worker_id, value: current_worker.id %>
           <%= f.check_box :pending %>
           <%= f.label :pending %>
         <% end %>
