@@ -32,12 +32,20 @@ before_action :authenticate_worker!, only: [:update]
 
   def update
     @job = Job.find(params[:id])
+    # if current_user && @job.user_id == current_user.id
+    #   if @job.update(job_params)
+    #     flash[:notice] = "You edited #{@job.title}"
+    #     redirect_to jobs_path
+    #   else
+    #     flash[:alert] = @job.errors.full_messages.each {|m| m.to_s}.join
+    #     render :edit
+    #   end
+    # else
       if current_worker
         if @job.update(job_params)
-          flash[:notice] = "You updated #{@job.title}."
           respond_to do |format|
-            format.html { redirect_to :back}
             format.js
+            format.html { redirect_to worker_path(current_worker) }
           end
         # elsif @job.update(pending: true, worker_id: current_worker.id)
         #   flash[:notice] = "You claimed #{@job.title}."

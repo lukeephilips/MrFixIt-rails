@@ -32,7 +32,7 @@
      <h2><%= job.title %></h2>
      <p> <%= job.description %></p>
      <span>Customer: <%= job.user.email %></span><br>
-     <span>Completed: <%= job.completed %></span>
+     <span>Completed: <%= job.completed %></span><br>
      <span>In Progress: <%= job.in_progress %></span>
 
    </div>
@@ -42,9 +42,7 @@
 <script >
 $(document).ready(function(){
   $('.complete-job input[type=checkbox]').click(function(){
-    alert("huh?");
     $(this).parent('form').submit();
-      $('.alert').html("<p>You updated this job. Get that money!</p>")
   });
 });
 </script>
