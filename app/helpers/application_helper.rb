@@ -1,9 +1,9 @@
 module ApplicationHelper
   def job_pending_to_claimed(job)
     if job.pending == true
-      'Unclaimed'
-    else
       'Claimed'
+    else
+      'Unclaimed'
     end
   end
 end

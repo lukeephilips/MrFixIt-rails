@@ -1,0 +1,5 @@
+<% if @job.completed? %>
+  $('.alert').html("<p>You completed this job. Get that money!</p>")
+<% else %>
+  $('.alert').html("<p>Blorg</p>")
+<% end %>

@@ -1,0 +1,5 @@
+<% if @job.pending? %>
+  $('.job-status').html("<p>You claimed this job. Get to work!</p>")
+<% else %>
+  $('.job-status').html("<p>Blorg</p>")
+<% end %>

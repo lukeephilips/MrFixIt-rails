@@ -1,6 +1,7 @@
 class WorkersController < ApplicationController
   def show
     @worker = current_worker
+    @jobs = Job.where(worker_id: current_worker)
     render :show
   end
 

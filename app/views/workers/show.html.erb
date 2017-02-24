@@ -1,22 +1,42 @@
-<h1><%= current_worker.email %>'s in process jobs:</h1>
+<div class="alert">
 
-<% Job.where(worker_id: current_worker, completed: false).each do |job| %>
+</div>
+<h2>Total in process jobs ( <%= @jobs.where(completed: false).count %>):</h2>
+<h2>Total completed jobs ( <%= @jobs.where(completed: true).count %>):</h2>
+
+
+<h1><%= current_worker.email %>'s in process jobs ( <%= @jobs.where(completed: false).count %>):</h1>
+<% @jobs.where(completed: false).each do |job| %>
   <div class="well">
     <h2><%= job.title %></h2>
     <p> <%= job.description %></p>
     <span>Customer: <%= job.user.email %></span><br>
-    <span>Completed: <%= job.completed %></span>
+    <div class="complete-job">
+      <%= form_for job do |f| %>
+        <%= f.check_box :completed %>
+        <%= f.label :completed %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 
-<% if Job.where(worker_id: current_worker, completed: true).any? %>
-  <h2><%= current_worker.email %>'s completed jobs:</h2>
-  <% Job.where(worker_id: current_worker, completed: true).each do |job| %>
-    <div class="well">
-      <h2><%= job.title %></h2>
-      <p> <%= job.description %></p>
-      <span>Customer: <%= job.user.email %></span><br>
-      <span>Completed: <%= job.completed %></span>
-    </div>
-  <% end %>
+<% if @jobs.where(completed: true).any? %>
+ <h2><%= current_worker.email %>'s completed jobs ( <%= @jobs.where(completed: true).count %>):</h2>
+ <% @jobs.where(completed: true).each do |job| %>
+   <div class="well">
+     <h2><%= job.title %></h2>
+     <p> <%= job.description %></p>
+     <span>Customer: <%= job.user.email %></span><br>
+     <span>Completed: <%= job.completed %></span>
+   </div>
+ <% end %>
 <% end %>
+
+<script >
+$(document).ready(function(){
+  $('.complete-job input[type=checkbox]').click(function(){
+    $(this).parent('form').submit();
+    $('.alert').html("<p>You completed this job. Get that money!</p>")
+    });
+  });
+</script>
