@@ -31,7 +31,6 @@ before_action :authenticate_worker!, only: [:update]
   end
 
   def update
-    byebug
     @job = Job.find(params[:id])
       if current_worker
         if @job.update(job_params)
