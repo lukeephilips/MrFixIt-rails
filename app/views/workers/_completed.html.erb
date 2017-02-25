@@ -1,0 +1,17 @@
+<h1><%= current_worker.email %>'s completed jobs (<%= @jobs.where(completed:true).count %>)</h1>
+<% @jobs.where(completed:true).each do |job| %>
+  <div class="well">
+    <h2><%= job.title %></h2>
+    <p> <%= job.description %></p>
+    <span>Customer: <%= job.user.email %></span><br>
+    <div class="complete-job">
+      <%= form_for job, remote: true do |f| %>
+        <%= f.check_box :in_progress %>
+        <%= f.label :in_progress %>
+
+        <%= f.check_box :completed %>
+        <%= f.label :completed %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

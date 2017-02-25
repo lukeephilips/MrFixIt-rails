@@ -32,17 +32,11 @@ before_action :authenticate_worker!, only: [:update]
 
   def update
     @job = Job.find(params[:id])
-      if current_worker
-        if @job.update(job_params)
-          respond_to do |format|
-            format.js
-            format.html { redirect_to worker_path(current_worker) }
-          end
-        else
-          render :show
-          flash[:notice] = "Something went wrong!"
-        end
-      end
+    @job.update(job_params)
+    respond_to do |format|
+      format.js
+      format.html { redirect_to worker_path(current_worker) }
+    end
   end
 
 private

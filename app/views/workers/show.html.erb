@@ -1,5 +1,5 @@
 <div class="alert">
-<p class="changes"></p>
+  <p class="changes"></p>
 </div>
 <div class="row">
   <div class="col-sm-4">
@@ -24,10 +24,10 @@
 </div>
 
 <script >
-$(document).ready(function(){
-  $('.complete-job input[type=checkbox]').click(function(){
-    $(this).parent('form').submit();
-    $('.changes').text("You updated your job");
+  $(document).ready(function(){
+    $('.complete-job input[type=checkbox]').click(function(){
+      $(this).parent('form').submit()
+      $('.changes').html('You did something!');
+    });
   });
-});
 </script>

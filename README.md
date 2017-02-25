@@ -9,7 +9,9 @@
 
 ## Description
 
-To be honest, I'm embarrassed by this work. Starting from badly built app through my for a loop and I definitely need to find some resources to learn AJAX better. I thought I knew enough to get by, but I'm once again lost in the mysteries of JavaScript. While I technically did use AJAX to accomplish the requirements, it looks and feels worse than if I'd just used pure Ruby. My tests pass but they don't actually accomplish anything. BOOOOOOOOO! :(
+To be honest, I'm embarrassed by this work. Starting from badly built app through my for a loop and I definitely need to find some resources to learn AJAX better. I thought I knew enough to get by, but everytime I made something that worked it would end up broken 20 minutes later. I'm once again lost in the mysteries of JavaScript. I should have fixed the silly double users model from the start (users/workers) but I thought I could suffer through it and fix it later- it is probably the source of much of my issues. Same for all the booleans.
+
+While I technically did use AJAX to accomplish the requirements, it looks and feels worse than if I'd just used pure Ruby. My tests pass but they don't actually accomplish anything. Lessons learned but BOOOOOOOOO! :(
 
 
 
