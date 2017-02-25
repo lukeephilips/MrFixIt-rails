@@ -9,6 +9,10 @@
 
 ## Description
 
+To be honest, I'm embarrassed by this work. Starting from badly built app through my for a loop and I definitely need to find some resources to learn AJAX better. I thought I knew enough to get by, but I'm once again lost in the mysteries of JavaScript. While I technically did use AJAX to accomplish the requirements, it looks and feels worse than if I'd just used pure Ruby. My tests pass but they don't actually accomplish anything. BOOOOOOOOO! :(
+
+
+
 users can:
 Users can register for basic user accounts. These accounts allow them to post jobs.
 Basic users can log into their accounts.
